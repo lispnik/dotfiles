@@ -1,0 +1,11 @@
+*~
+emacs/.emacs.d/elpa/
+emacs/.emacs.d/recentf
+emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/server/
+emacs/.emacs.d/projectile.cache
+emacs/.emacs.d/semanticdb/
+emacs/.emacs.d/.emacs.desktop
+emacs/.emacs.d/.emacs.desktop.lock
+emacs/.emacs.d/ido.last
+emacs/.emacs.d/smex-items

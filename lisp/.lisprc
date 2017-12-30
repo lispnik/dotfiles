@@ -1,0 +1,17 @@
+;;; -*-lisp-*-
+
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".quicklisp/setup.lisp" (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
+#+(and asdf darwin)
+(defmethod asdf:perform :after ((o asdf:load-op) (c (eql (asdf:find-system "cffi"))))
+  (let ((library-directories (intern "*FOREIGN-LIBRARY-DIRECTORIES*" (find-package "CFFI"))))
+    (set library-directories
+         (cons #p"/opt/local/lib/" (symbol-value library-directories)))))
+
+#+nil
+(defmethod asdf:perform :after ((o asdf:load-op) (c (eql (asdf:find-system "lparallel"))))
+  (set (intern "*KERNEL*" (find-package "LPARALLEL"))
+       (uiop:symbol-call "LPARALLEL" "MAKE-KERNEL" 8)))
